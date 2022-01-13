@@ -13,15 +13,29 @@ sorteia = n => {
 }
 
 let chances = 0
-let numeroPensado = parseInt(
-    prompt('Digite até que número a partir de 0 você quer que eu pense:')
-)
-let numSort = sorteia(numeroPensado)
-console.log(numSort)
+
+const numeroPensado = () => parseInt(prompt('Digite até que número a partir de 0 você quer que eu pense:'))
+
+const verificaNumPensado = () => {
+
+    let input = ''
+
+    do {
+        input = numeroPensado()
+    } while (isNaN(input))
+
+    return input
+}
+
+const  numPensado = verificaNumPensado()
+const numSort = sorteia(numPensado)
+
+
+
 while (chances < 5) {
     let chute = parseInt(
         prompt(
-            'Já pensei! Que número de 0 a ' + numeroPensado + ' você acha que é?'
+            'Já pensei! Que número de 0 a ' + numPensado + ' você acha que é?'
         )
     )
     if (chute === numSort) {
